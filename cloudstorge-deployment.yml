@@ -19,16 +19,17 @@ spec:
     spec:
       containers:
       - name: cloudserver-container
-        image: khm0930/cloud_storge_web:v1.2  # Docker Hub에 올린 이미지
+        image: khm0930/cloud_storage_web:v1.3  # Docker Hub에 올린 이미지
         resources:
           requests:
-            cpu: "200m"       # 파드가 최소한으로 요구하는 CPU
-            memory: "256Mi"   # 파드가 최소한으로 요구하는 메모리
+            cpu: "500m"       # 파드가 최소한으로 요구하는 CPU
+            memory: "512Mi"   # 파드가 최소한으로 요구하는 메모리
           limits:
-            cpu: "1000m"       # 파드가 사용할 수 있는 최대 CPU
-            memory: "512Mi"   # 파드가 사용할 수 있는 최대 메모리
+            cpu: "1"       # 파드가 사용할 수 있는 최대 CPU
+            memory: "1Gi"   # 파드가 사용할 수 있는 최대 메모리
         ports:
         - containerPort: 8000  # 웹 애플리케이션의 포트
+        - containerPort: 8080  # 메트릭스를 수집할 포트 (예시로 추가)
         volumeMounts:
         - mountPath: "/media/uploads"  # 파드 내부에서 마운트할 경로
           name: media-storage
