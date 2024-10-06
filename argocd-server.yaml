@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app.kubernetes.io/component":"server","app.kubernetes.io/name":"argocd-server","app.kubernetes.io/part-of":"argocd"},"name":"argocd-server","namespace":"argocd"},"spec":{"ports":[{"name":"http","port":80,"protocol":"TCP","targetPort":8080},{"name":"https","port":443,"protocol":"TCP","targetPort":8080}],"selector":{"app.kubernetes.io/name":"argocd-server"}}}
+  creationTimestamp: "2024-10-06T09:30:16Z"
+  labels:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/name: argocd-server
+    app.kubernetes.io/part-of: argocd
+  name: argocd-server
+  namespace: argocd
+  resourceVersion: "1109768"
+  uid: 647a69fa-71f5-40dd-a715-f3334f396fbf
+spec:
+  type: NodePort  # ClusterIP에서 NodePort로 변경
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+      nodePort: 30080  # 외부에서 접근할 HTTP 포트
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 8080
+      nodePort: 30443  # 외부에서 접근할 HTTPS 포트
+  selector:
+    app.kubernetes.io/name: argocd-server
+  sessionAffinity: None
+status:
+  loadBalancer: {}
