@@ -26,4 +26,18 @@ spec:
       nodePort: 30030  # NodePort로 외부에 노출되는 포트
   selector:
     app.kubernetes.io/name: grafana
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alertmanager-nodeport
+  namespace: monitoring
+spec:
+  type: NodePort
+  ports:
+    - port: 9093
+      targetPort: 9093
+      nodePort: 30093
+  selector:
+    app.kubernetes.io/name: alertmanager
 

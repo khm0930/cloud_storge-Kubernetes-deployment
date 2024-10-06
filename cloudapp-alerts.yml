@@ -2,13 +2,18 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: cloudapp-alerts
-  namespace: monitoring  # Prometheus와 동일한 네임스페이스
+  namespace: monitoring
+  labels:
+    release: prometheus-stack
 spec:
   groups:
   - name: cloudapp-rules
     rules:
     - alert: HighCPUUsage
-      expr: sum(rate(container_cpu_usage_seconds_total[5m])) by (pod) / sum(kube_pod_container_resource_requests_cpu_cores) by (pod) * 100 > 50
+      expr: |
+        sum by (pod) (
+          label_replace(rate(container_cpu_usage_seconds_total{namespace="default", pod=~"cloudserver-web.*"}[5m]), "pod", "$1", "pod", "cloudserver-web-(.*)")
+        ) * 100 > 0.1
       for: 1m
       labels:
         severity: warning
@@ -24,10 +29,10 @@ spec:
         summary: "Pod {{ $labels.pod }} is down"
         description: "Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} is down for more than 1 minute."
     - alert: PodCreated
-      expr: changes(kube_pod_created[5m]) > 0
+      expr: changes(kube_deployment_status_replicas{namespace="default", deployment="cloudserver-web"}[5m]) > 0
       for: 1m
       labels:
         severity: info
       annotations:
         summary: "New Pod {{ $labels.pod }} created in namespace {{ $labels.namespace }}"
-        description: "Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} was created."
+        description: "New Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} was created."

@@ -1,0 +1,4 @@
+__pycache__/
+linux-amd64/
+kube-prometheus-stack/
+metallb/

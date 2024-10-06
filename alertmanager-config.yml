@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alertmanager-config
+  namespace: monitoring  # 설정에 맞는 네임스페이스로 변경 가능
+  labels:
+    release: prometheus-stack  # Helm release와 일치하게 라벨 설정
+data:
+  alertmanager.yml: |
+    global:
+      resolve_timeout: 5m
+      log_level: debug
+
+    route:
+      receiver: 'slack-alerts'
+      group_by: ['alertname']
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 5m
+
+    receivers:
+    - name: 'slack-alerts'
+      slack_configs:
+      - api_url: 'https://hooks.slack.com/services/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'
+        channel: '#server-monitoring'
+        username: 'PrometheusAlertBot'
+        icon_emoji: ':warning:'
+        send_resolved: true
+        text: "WARING! WARING!!!
+
