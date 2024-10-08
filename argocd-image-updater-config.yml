@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-image-updater-config
+  namespace: argocd  # ArgoCD가 설치된 네임스페이스로 설정
+data:
+  registries.conf: |
+    registries:
+      - name: Docker Hub
+        api_url: https://registry.hub.docker.com
+        prefix: index.docker.io
+        credentials:
+          usernameSecret:
+            name: dockerhub-cred
+            key: .dockerconfigjson
+          passwordSecret:
+            name: dockerhub-cred
+            key: .dockerconfigjson

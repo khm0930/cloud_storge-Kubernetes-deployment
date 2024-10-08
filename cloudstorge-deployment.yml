@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cloudserver-web
+  argocd-image-updater.argoproj.io/image-list: khm0930/cloud_storage_web  # Docker Hub의 이미지
+  argocd-image-updater.argoproj.io/write-back-method: git  # Git에 이미지 태그를 자동 업데이트
 spec:
   replicas: 3  # 원하는 복제본 수
   strategy:
@@ -19,7 +21,7 @@ spec:
     spec:
       containers:
       - name: cloudserver-container
-        image: khm0930/cloud_storage_web:v1.3  # Docker Hub에 올린 이미지
+        image: khm0930/cloud_storage_web:latest  # Docker Hub에 올린 이미지
         resources:
           requests:
             cpu: "500m"       # 파드가 최소한으로 요구하는 CPU
