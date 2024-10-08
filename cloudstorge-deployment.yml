@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: cloudserver-container
-        image: khm0930/cloud_storage_web:v1.3  # Docker Hub에 올린 이미지
+        image: khm0930/cloud_storage_web:148dd101494b03f2ea458f8024d636abd7eb48ba
         resources:
           requests:
             cpu: "500m"       # 파드가 최소한으로 요구하는 CPU
