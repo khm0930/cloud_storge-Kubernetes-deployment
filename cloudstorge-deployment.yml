@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: cloudserver-web
 spec:
-  replicas: 3  # 원하는 복제본 수
+#  replicas: 3  # 원하는 복제본 수
   strategy:
     type: RollingUpdate
     rollingUpdate:
