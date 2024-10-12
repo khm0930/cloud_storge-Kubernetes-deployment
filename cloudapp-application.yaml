@@ -1,0 +1,366 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2024-10-06T10:18:56Z"
+  generation: 4330
+  name: cloudapp
+  namespace: argocd
+  resourceVersion: "1807525"
+  uid: 05d6ee1c-86da-42e4-9985-c5ef8aeb0f49
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: ./
+    repoURL: https://github.com/khm0930/cloud_storge-Kubernetes-deployment.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+status:
+  controllerNamespace: argocd
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2024-10-08T11:48:11Z"
+    deployedAt: "2024-10-08T11:48:14Z"
+    id: 7
+    initiatedBy:
+      username: admin
+    revision: ed2364ef8e47250f7a11f03c0ca07500140f01a6
+    source:
+      path: ./
+      repoURL: https://github.com/khm0930/cloud_storge-Kubernetes-deployment.git
+      targetRevision: HEAD
+  - deployStartedAt: "2024-10-08T12:03:45Z"
+    deployedAt: "2024-10-08T12:03:47Z"
+    id: 8
+    initiatedBy:
+      automated: true
+    revision: dace8f7a8c74df20e4447178a78f28dc97e122c6
+    source:
+      path: ./
+      repoURL: https://github.com/khm0930/cloud_storge-Kubernetes-deployment.git
+      targetRevision: HEAD
+  - deployStartedAt: "2024-10-10T07:52:18Z"
+    deployedAt: "2024-10-10T07:52:20Z"
+    id: 9
+    initiatedBy:
+      username: admin
+    revision: 94e3925a63aa9477cd650ee0c89b05d0ad8d980b
+    source:
+      path: ./
+      repoURL: https://github.com/khm0930/cloud_storge-Kubernetes-deployment.git
+      targetRevision: HEAD
+  - deployStartedAt: "2024-10-10T08:07:12Z"
+    deployedAt: "2024-10-10T08:07:15Z"
+    id: 10
+    initiatedBy:
+      automated: true
+    revision: bb629234893274c1d50dd45993a1e7348aff5347
+    source:
+      path: ./
+      repoURL: https://github.com/khm0930/cloud_storge-Kubernetes-deployment.git
+      targetRevision: HEAD
+  - deployStartedAt: "2024-10-10T08:12:19Z"
+    deployedAt: "2024-10-10T08:12:26Z"
+    id: 11
+    initiatedBy:
+      automated: true
+    revision: bf53752eb2dd9ecacfb4a4b147f1c8a8dda91719
+    source:
+      path: ./
+      repoURL: https://github.com/khm0930/cloud_storge-Kubernetes-deployment.git
+      targetRevision: HEAD
+  - deployStartedAt: "2024-10-10T08:25:25Z"
+    deployedAt: "2024-10-10T08:25:27Z"
+    id: 12
+    initiatedBy:
+      username: admin
+    revision: bf53752eb2dd9ecacfb4a4b147f1c8a8dda91719
+    source:
+      path: ./
+      repoURL: https://github.com/khm0930/cloud_storge-Kubernetes-deployment.git
+      targetRevision: HEAD
+  - deployStartedAt: "2024-10-10T10:33:36Z"
+    deployedAt: "2024-10-10T10:33:38Z"
+    id: 13
+    initiatedBy:
+      automated: true
+    revision: aa650b1dfb98fac4e0a78082b25995a96ed61fe1
+    source:
+      path: ./
+      repoURL: https://github.com/khm0930/cloud_storge-Kubernetes-deployment.git
+      targetRevision: HEAD
+  - deployStartedAt: "2024-10-10T10:34:08Z"
+    deployedAt: "2024-10-10T10:34:09Z"
+    id: 14
+    initiatedBy:
+      username: admin
+    revision: aa650b1dfb98fac4e0a78082b25995a96ed61fe1
+    source:
+      path: ./
+      repoURL: https://github.com/khm0930/cloud_storge-Kubernetes-deployment.git
+      targetRevision: HEAD
+  - deployStartedAt: "2024-10-11T12:44:46Z"
+    deployedAt: "2024-10-11T12:44:48Z"
+    id: 15
+    initiatedBy:
+      automated: true
+    revision: 0777f1ad0337780bf2ad9a91556218fa97c5607c
+    source:
+      path: ./
+      repoURL: https://github.com/khm0930/cloud_storge-Kubernetes-deployment.git
+      targetRevision: HEAD
+  - deployStartedAt: "2024-10-12T09:28:26Z"
+    deployedAt: "2024-10-12T09:28:29Z"
+    id: 16
+    initiatedBy:
+      username: admin
+    revision: 1d27da400e4155e7c868d88941ddfe7ecd996c14
+    source:
+      path: ./
+      repoURL: https://github.com/khm0930/cloud_storge-Kubernetes-deployment.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2024-10-12T09:28:29Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        revision: 1d27da400e4155e7c868d88941ddfe7ecd996c14
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2024-10-12T09:28:26Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: ConfigMap
+        message: configmap/alertmanager-config unchanged
+        name: alertmanager-config
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolume
+        message: persistentvolume/media-pv unchanged
+        name: media-pv
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/media-pvc unchanged
+        name: media-pvc
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/alertmanager-nodeport unchanged
+        name: alertmanager-nodeport
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/grafana-nodeport unchanged
+        name: grafana-nodeport
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/prometheus-nodeport unchanged
+        name: prometheus-nodeport
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/cloudserver-service unchanged
+        name: cloudserver-service
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/cloudserver-web configured
+        name: cloudserver-web
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: autoscaling
+        hookPhase: Running
+        kind: HorizontalPodAutoscaler
+        message: horizontalpodautoscaler.autoscaling/cloudserver-web-hpa unchanged
+        name: cloudserver-web-hpa
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v2
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: PrometheusRule
+        message: prometheusrule.monitoring.coreos.com/cloudapp-alerts unchanged
+        name: cloudapp-alerts
+        namespace: monitoring
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: monitoring.coreos.com
+        hookPhase: Running
+        kind: ServiceMonitor
+        message: servicemonitor.monitoring.coreos.com/cloudserver-web-monitor unchanged
+        name: cloudserver-web-monitor
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: metallb.io
+        hookPhase: Running
+        kind: L2Advertisement
+        message: l2advertisement.metallb.io/l2-adv unchanged
+        name: l2-adv
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1beta1
+      - group: metallb.io
+        hookPhase: Running
+        kind: IPAddressPool
+        message: ipaddresspool.metallb.io/my-ip-pool unchanged
+        name: my-ip-pool
+        namespace: default
+        status: Synced
+        syncPhase: Sync
+        version: v1beta1
+      revision: 1d27da400e4155e7c868d88941ddfe7ecd996c14
+      source:
+        path: ./
+        repoURL: https://github.com/khm0930/cloud_storge-Kubernetes-deployment.git
+        targetRevision: HEAD
+  reconciledAt: "2024-10-12T13:21:03Z"
+  resources:
+  - kind: ConfigMap
+    name: alertmanager-config
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - kind: PersistentVolume
+    name: media-pv
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: media-pvc
+    namespace: default
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: cloudserver-service
+    namespace: default
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: alertmanager-nodeport
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: grafana-nodeport
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: prometheus-nodeport
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: cloudserver-web
+    namespace: default
+    status: Synced
+    version: v1
+  - group: autoscaling
+    health:
+      message: recommended size matches current size
+      status: Healthy
+    kind: HorizontalPodAutoscaler
+    name: cloudserver-web-hpa
+    namespace: default
+    status: Synced
+    version: v2
+  - group: metallb.io
+    kind: IPAddressPool
+    name: my-ip-pool
+    namespace: default
+    status: Synced
+    version: v1beta1
+  - group: metallb.io
+    kind: L2Advertisement
+    name: l2-adv
+    namespace: default
+    status: Synced
+    version: v1beta1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: cloudapp-alerts
+    namespace: monitoring
+    status: Synced
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: cloudserver-web-monitor
+    namespace: default
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    images:
+    - khm0930/cloud_storage_web:64a6f20f78e2f0357d73265dcb492c3e74ad9efd
+  sync:
+    comparedTo:
+      destination:
+        namespace: default
+        server: https://kubernetes.default.svc
+      source:
+        path: ./
+        repoURL: https://github.com/khm0930/cloud_storge-Kubernetes-deployment.git
+        targetRevision: HEAD
+    revision: 1d27da400e4155e7c868d88941ddfe7ecd996c14
+    status: Synced
