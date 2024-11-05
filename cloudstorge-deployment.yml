@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: cloudserver-container
-        image: khm0930/cloud_storage_web:085a463f6dccb2a1c9a5cefc3f91343d10a38f5f
+        image: khm0930/cloud_storage_web:4c0c1e03e06ee0cca78c69759167c9607f825936
         resources:
           requests:
             cpu: "500m"       # 파드가 최소한으로 요구하는 CPU
